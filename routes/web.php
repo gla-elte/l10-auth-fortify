@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +20,8 @@ Route::get('/', function () {
 
 Route::get('/home', function () {
   return "Üdv, " . auth()->user()->name;
+})->middleware('auth');
+
+Route::get('/user/two-factor-auth', function () {
+  return view('auth.two-factor-auth');
 })->middleware('auth');
